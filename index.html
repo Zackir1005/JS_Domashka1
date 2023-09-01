@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domashka 1</title>
+</head>
+<body>
+    <script>
+        // Zadacha 1
+        alert('Задача 1\nНапишите скрипт, который принимает от  пользователя число и выводит TRUE, если число входит в диапазон от 1 до 10 включительно и является чётным. В остальных случаях должно выводиться FALSE.');
+        var z1 = +prompt('Введите только число: ', 0)
+        while (isNaN(z1)) {
+            z1 = +prompt('Ошибка!\nВведите только число:', 0)
+        }
+        if (z1>=1 && z1<=10 && z1%2==0)
+         alert('TRUE');
+        else 
+        alert('FALSE');
+        
+        // Zadacha 2
+        alert('Задача 2\nНапишите скрипт, в которой пользователь вводит два числа, являющихся началом и концом диапазона, программа выводит ему все числа, входящие в диапазон и являющиеся степенями двойки.');
+        var z2n1 =+prompt('Введите первое число:', 0)
+        var z2n2 =+prompt('Введите второе число:', 0)
+        while (isNaN(z2n1) && isNaN(z2n2)) {
+            var z2n1 =+prompt('Ошибка!\nВведите первое число:', 0)
+            var z2n2 =+prompt('Ошибка!\nВведите второе число:', 0)
+        }
+        for (var i = z2n1; i <= z2n2; i++) {
+            if ((i & (i - 1)) === 0) {
+                alert(i)
+            }
+        }
+
+        // Zadacha 3
+        alert('Задача 3\nНапишите скрипт, в которой пользователь вводит число, после чего программа с помощью окна confirm спрашивает его, хочет ли он ввести ещё число. Если да, то происходит ввод. Если нет, то программа выводит сумму всех введённых чисел.');
+        var numbers = [];
+        var tf1;
+        do {
+            var z3 = +prompt("Введите только число", 0);
+            if (z3!=numbers) {alert('Это не число!')}
+            
+            let res = confirm('Добавить число?');
+                if (res==false) {break;} 
+            
+            numbers.push(+z3); // Метод push() добавляет один или более элементов в конец массива и возвращает новую длину массива.
+        } while (tf1);
+
+        var sum = 0;
+        for (var numb of numbers) { // summa vsekh chisel massiva s pomoshyu cikla for...of
+        sum += numb;
+        }
+        alert(`Сумма всех чисел: ${sum}`)
+
+        // Zadacha 4
+        alert('Задача 4\nСкрипт принимает строку от пользователя, после чего выводит эту же строку, из которой убраны все пробелы и цифры 1. Если в строке их не было, то скрипт должен сообщить об этом пользователю.');
+        const z4 = prompt("Введите текст");
+        alert(`Текст без символа " ": ${z4.replaceAll(' ','')}`)
+        alert(`Текст без символа "1": ${z4.replaceAll('1','')}`)
+        if (z4.indexOf(' ')) {
+            alert('Символ " " не найден!')
+        }
+        if (z4.indexOf('1')) {
+            alert('Символ "1" не найден!')
+        }
+
+        // Zadacha 5
+        alert('Задача 5\nНапишите программу, которая выводит 10 случайных чисел из диапазона от 1 до 20 кроме тех, которые делятся на 3 без остатка');
+        var arr=[]
+        for (let i = 0; i < 10; i++) {
+            let ranNum = getRandom();
+            if (ranNum%3!=0) arr.push(ranNum);
+        }
+        alert(arr);
+        
+        function getRandom() {
+            let tf2;
+            do {
+                let randNum=Math.floor((Math.random()*(20-1+1)+1));
+                if (randNum%3!=0) {
+                    return randNum;
+                    tf2=false;
+                } else tf2=true;
+            } while (tf2);
+        }
+    </script>
+</body>
+</html>
+<!-- // NaN - Not a Number; NaN = Vse simvoli, krome chisel; isNaN(N) - yavlyaetsya li vvod ne chislom -->
+<!-- Metod push() dobavlyaet odin ili bolee elementov v konec massiva i vozvrashaet novuyu dlinnu massiva -->
